@@ -83,20 +83,18 @@ def scrape_info():
     # Grab some Martian facts
     USGS_url = 'https://space-facts.com/mars/'
     tables = pd.read_html(USGS_url)
-    tables = tables[0]
-    # Checking out the Martian hemispheres
-    geo_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
-    html = browser.visit(geo_url)
 
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
+  #  geo_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+   # html = browser.visit(geo_url)
 
-    found = soup.find('div', class_="collapsible results").find_all(["img", "src"])
-    geo_links = []
-    c = 0
-    for n in found:
-        geo_links.append(found[c]['src'])
-        c += 1
+ #   html = browser.html
+ #   soup = BeautifulSoup(html, 'html.parser')
+
+#found = soup.find('div', class_="collapsible results").find_all('a')
+#found_link = found[::1]
+#geo_links = []
+#for n in range(len(found_link)):
+#    geo_links.append(found_link[n]['src'])
 
 # soup.find('div', class_="collapsible results").find_all('a')
     mars_data = {
@@ -104,7 +102,7 @@ def scrape_info():
         "news_p" : newest_p,
         "featured_image_url" : featured_image_url,
         "mars_weather" : mars_weather,
-        "mars_table" : tables
+        'mars_table' : tables
     }
     browser.quit()
 
