@@ -21,7 +21,8 @@
                 <h1 class="display-4">Mission to Mars </h1>
             </div>
             <div class = 'row'>
-                <button type="button" class="btn btn-primary">Get Scrapping!</button>
+                <a class="btn btn-primary" href="/scrape" role="button">Scrape Mars</a>
+                
             </div>
         </div>
         <!--END JUMBOTRON-->
@@ -35,8 +36,8 @@
                 Martian News
                 </div>
                 <div class = 'card-body'>
-                    <h5 class = "card-title"> InSight Is the Newest Mars Weather Service </h5>
-                    <p class = "card-text">"No matter how cold your winter has been, it's probably not as chilly as Mars. Check for yourself: Starting today, the public can get a daily weather report from NASA's InSight lander."</p>
+                    <h5 class = "card-title"> {{input_data.news_title}} </h5>
+                    <p class = "card-text">{{input_data.news_p}}</p>
                 </div>
             </div>    
         </div>    
