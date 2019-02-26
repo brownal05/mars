@@ -83,29 +83,51 @@ def scrape_info():
     # Grab some Martian facts
     USGS_url = 'https://space-facts.com/mars/'
     tables = pd.read_html(USGS_url)
-    tables = pd.to_html(tables)
+    mars_table = tables[0]
+    mars_table.columns = ['Fact','Data']
+    mars_dict = mars_table.to_dict("records")
 
     # Checking out the Martian hemispheres
-  #  geo_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
- #   html = browser.visit(geo_url)
+    geo_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    html = browser.visit(geo_url)
 
-   # html = browser.html
- #   soup = BeautifulSoup(html, 'html.parser')
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
 
-   # found = soup.find('div', class_="collapsible results").find_all(["img", "src"])
-   # geo_links = []
-   # c = 0
-   # for n in found:
-   #     geo_links.append(found[c]['src'])
-   #     c += 1
+    found_links = soup.find('div', class_="collapsible results").find_all('a')
+    found_links = found_links[::2]
+    found_titles = soup.find('div', class_="collapsible results").find_all('h3')
+   
+    title = []
+    for i in range(len(found_titles)):
+      title.append(found_titles[i].text)
 
-# soup.find('div', class_="collapsible results").find_all('a')
+    geo_links = []
+    img_url = []
+    full_img = []
+
+    for i in range(len(found_links)):
+      geo_links.append(found_links[i]['href'])
+      img_url.append(f'https://astrogeology.usgs.gov{geo_links[i]}')
+      html = browser.visit(img_url[i])
+      html = browser.html
+      soup = BeautifulSoup(html, 'html.parser')
+      html = browser.visit(img_url[i])
+      html = browser.html
+      soup = BeautifulSoup(html, 'html.parser')
+      full_img.append(soup.find('a', target="_blank")['href'])
+
+      hemi_dict = {}
+      hemi_dict['Image'] = full_img
+      hemi_dict['title'] = title
+
     mars_data = {
         "news_title" : newest_title,
         "news_p" : newest_p,
         "featured_image_url" : featured_image_url,
         "mars_weather" : mars_weather,
-        "mars_table" : tables
+        "mars_table" : mars_dict,
+        "hemispheres" : hemi_dict
     }
     browser.quit()
 

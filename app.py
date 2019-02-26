@@ -20,7 +20,7 @@ def index():
 def scrape():
     mars_data = scrape_mars.scrape_info()
 
-    mongo.db.mars.update({}, mars_data, upsert=True)
+    mongo.db.mars.update({}, mars_data,  upsert=True)
 
     return redirect("/")
 

@@ -28,7 +28,7 @@
         <!--END JUMBOTRON-->
     </div>
     <!--Card Layouts-->
-    <!--first card-->
+    <!--news card-->
     <div class = "container-fluid">
         <div class = "row">
             <div class="card card1">
@@ -42,4 +42,89 @@
             </div>    
         </div>    
     </div>
+    <!--weather card-->
+    <div class = "container-fluid">
+        <div class = "row">
+            <div class="card">
+                <h4 class = "card-title">Current Weather on Mars</h4>
+                <p class = "card-text">{{input_data.mars_weather}}</p>
+            </div>
+        </div>
+    </div>    
+    <!--Featured Image Card-->
+    <div class = "container-fluid">
+        <div class = "row">
+            <div class="card">
+                <h4 class = "card-title">Featured Mars Image</h4>
+                <p class = "card-text"><img src={{input_data.featured_image_url}} alt= "Featured image from Mars"></p>
+            </div>
+        </div>
+    </div>    
+    <!--Martian Facts-->
+    <div class = "container-fluid">
+        <div class = "row">
+            <div class="card">
+                <h4 class = "card-title">Martian Facts</h4>
+                <table>
+                    <tr>
+                        <th>Facts:</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>{{input_data.mars_table.0.Fact}}</td>
+                        <td>{{input_data.mars_table.0.Data}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{input_data.mars_table.1.Fact}}</td>
+                        <td>{{input_data.mars_table.1.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.2.Fact}}</td>
+                            <td>{{input_data.mars_table.2.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.3.Fact}}</td>
+                            <td>{{input_data.mars_table.3.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.4.Fact}}</td>
+                            <td>{{input_data.mars_table.4.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.5.Fact}}</td>
+                            <td>{{input_data.mars_table.5.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.6.Fact}}</td>
+                            <td>{{input_data.mars_table.6.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.7.Fact}}</td>
+                            <td>{{input_data.mars_table.7.Data}}</td>
+                    </tr>
+                    <tr>
+                            <td>{{input_data.mars_table.8.Fact}}</td>
+                            <td>{{input_data.mars_table.8.Data}}</td>
+                    </tr>
+                
+                </table>
+            </div>
+        </div>
+    </div>    
+    <!--Martian Enhanced Hemisphere Images-->
+    <div class = "container-fluid">
+            <div class = "row">
+                <div class="card">
+                    <h4 class = "card-title">Featured Mars Image</h4>
+                    <p class = "card-text">{{input_data.hemispheres.title.0}}</p>
+                    <p class = "card-text"><img src={{input_data.hemispheres.Image.0}} alt= "Featured image from Mars"></p>
+                    <p class = "card-text">{{input_data.hemispheres.title.1}}</p>
+                    <p class = "card-text"><img src={{input_data.hemispheres.Image.1}} alt= "Featured image from Mars"></p>
+                    <p class = "card-text">{{input_data.hemispheres.title.2}}</p>
+                    <p class = "card-text"><img src={{input_data.hemispheres.Image.2}} alt= "Featured image from Mars"></p>
+                    <p class = "card-text">{{input_data.hemispheres.title.3}}</p>
+                    <p class = "card-text"><img src={{input_data.hemispheres.Image.3}} alt= "Featured image from Mars"></p>
+                </div>
+            </div>
+        </div>    
 </body>
